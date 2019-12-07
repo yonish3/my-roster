@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<!-- team search app -->
+    <input id=teamInput type="text">
+    <button id='getTeamButton'>Get Roster</button>
+    <div id='container'></div>
+
+ <!-- Dream team app -->
+    <button id='getDreamTeam'>Create Your Dream Team</button>
+    <div id=dreamTeamContainer></div>
+</body>
+
+<script src="../jquery/dist/jquery.js"></script>
+<script src="../handlebars/dist/handlebars.js"></script>
+<script src="render.js"></script>
+<script src="main.js"></script>
+
+<!-- team search template script -->
+<script id="players-template" type="text/x-handlebars-template">
+    {{#each this}}
+    <div class='player'>
+        <p class='nameOf'>{{ firstName }} {{ lastName }} </p>
+        <p>{{ jersey }} </p>
+        <img class='playerImg' src="https://nba-players.herokuapp.com/players/{{ lastName }}/{{ firstName }}" alt="">
+        <div class='stats'></div>
+        <p>{{ pos }}</p>  
+        <button id='addPlayer'>Add To Dram Team</button>
+    </div>  
+        {{/each}}
+  </script>
+
+<!-- dream team template -->
+  <script id="dreamTeam-template" type="text/x-handlebars-template">
+    {{#each this}}
+    <div class='dreamPlayer'>
+        <p class='nameOf'>{{ firstName }} {{ lastName }}</p><br>
+        <p>{{ jerseyNumber }}</p><br>
+        <img src="{{ picture }}" alt="">
+        <p>{{ position }}</p>
+    </div>  
+        {{/each}}
+  </script>
+
+</html>
